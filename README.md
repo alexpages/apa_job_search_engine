@@ -4,13 +4,13 @@ Job-Search-Engine
 ### About
 The main purpose of this app is to optimize job search with NLP. The key elements of the project include:
 
-* Java and Spring Boot
-* Apache Kafka for messaging queue
+* Java/Spring Boot
+* Apache Kafka
 * Open NLP for language processing in the Business Layer
 * JSoup and Selenium for HTML/Web Scraping
-* MongoDB for the Database
+* MongoDB
 * Spring Web for minimal frontend
-* 
+
 The LinkedIn experience filter is known to be unreliable, as shown in the picture below:
 
 <img alt="img.png" height="300" src="src/main/resources/img.png" width="350"/>
@@ -43,21 +43,36 @@ makes interaction easier.
 - **Configure mongod.conf**. In Mac: go to finder, Comand + Shift +G and paste "/opt/homebrew/etc/mongod.conf". By default, mongodb has no auth enabled, and if you specify it in the application.properties, you may get an error.
 
 **Database commands**
-- **_Start db:_** brew services start mongodb-community
-- **_Stop db:_** brew services stop mongodb-community
-- **_Restart db:_** brew services stop mongodb-community
-- **_Check service status:_** brew services list
-- **Check if mongodb is listening** on default port 27017: sudo lsof -i :27017
-- **_To uninstall:_** (in case you mess it up): brew services uninstall mongodb-community
-
+- **_Start db_** 
+```bash
+brew services start mongodb-community
+```
+- **_Stop db_** 
+```bash
+brew brew services stop mongodb-community
+```
+- **_Restart db_** 
+```bash
+brew services stop mongodb-community
+```
+- **_Check service status_**
+```bash
+brew services list
+```
+- **Check if mongodb is listening** on default port 27017
+```bash
+sudo lsof -i :27017
+```
+- **_To uninstall:_** (in case you mess it up)
+```bash
+brew services uninstall mongodb-community
+```
 To check if there is any dbs created: 
 - Go to terminal and enter "mongosh" if you have used step 1
 - Enter 'show dbs'
   - If you have started application before creating manually the db, you will see that mongodb has created a db in the moment of startup.
 
 More info: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
-
-
 
 ****
 
@@ -68,7 +83,7 @@ Unit tests have been implemented to test the services:
 
 ****
 **Future Enhancements**
-* Enhance the business logic for NlpService, specifically the scoreWords method, by adding replacements for newline characters (count, hasNext, then replace).
-* Include support for other web browsers (Firefox, Safari, etc
+* Improve the business logic (NlpService, specifically the scoreWords method, by adding replacements for newline characters (count, hasNext, then replace)).
+* Include support for other web browsers (Firefox, Safari, etc.)
 
 
