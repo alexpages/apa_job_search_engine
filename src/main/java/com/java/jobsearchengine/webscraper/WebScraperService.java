@@ -16,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class WebScraperService {
 
-    private final ChromeDriver driver;
+    private final WebDriver driver;
     private final NlpController nlpController;
 
     @Autowired
-    public WebScraperService(ChromeDriver driver, NlpController nlpController) {
+    public WebScraperService(WebDriver driver, NlpController nlpController) {
         this.driver = driver;
         this.nlpController = nlpController;
     }
@@ -80,7 +80,7 @@ public class WebScraperService {
         List<WebElement> jobCards = jobSearchBoard
                 .findElements(By.xpath("//a[@data-tracking-control-name='public_jobs_jserp-result_search-card']"));
 
-        JavascriptExecutor executor = driver;
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         List<List<String>>scrapedJobs = new ArrayList<>();
         for (WebElement jobCard: jobCards) {
             executor.executeScript("arguments[0].click();", jobCard);

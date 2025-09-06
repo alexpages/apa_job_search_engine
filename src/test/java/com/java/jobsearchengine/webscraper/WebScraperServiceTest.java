@@ -1,5 +1,6 @@
 package com.java.jobsearchengine.webscraper;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import com.java.jobsearchengine.nlp.NlpController;
 import com.java.jobsearchengine.nlp.NlpService;
@@ -32,6 +33,12 @@ class WebScraperServiceTest {
         underTest = new WebScraperService(driver, nlpController);
     }
 
+    @BeforeAll
+    static void setupClass() {
+        // This will automatically download and setup the correct ChromeDriver version
+        WebDriverManager.chromedriver().setup();
+    }
+
     @AfterEach
     void tearDown() {
         driver.quit();
@@ -41,7 +48,7 @@ class WebScraperServiceTest {
     @Order(1)
     void obtainJobUrls() {
         //given
-        String URL = "https://www.linkedin.com/jobs/search?keywords=Junior%20Java&location=Germany&trk=public_jobs_jobs-search-bar_search-submit&position=2&pageNum=0&currentJobId=3625258171";
+        String URL = "https://www.linkedin.com/jobs/search?keywords=Junior%20Java&location=Taiwan&trk=public_jobs_jobs-search-bar_search-submit&position=2&pageNum=0&currentJobId=3625258171";
         driver.get(URL);
         WebElement jobCard = new WebDriverWait(driver, Duration.ofSeconds(4))
                 .until(ExpectedConditions.presenceOfElementLocated(By
@@ -56,7 +63,7 @@ class WebScraperServiceTest {
     @Order(2)
     void obtainJobDescription() {
         //given
-        String URL = "https://www.linkedin.com/jobs/search?keywords=Junior%20Java&location=Germany&trk=public_jobs_jobs-search-bar_search-submit&position=3&pageNum=0";
+        String URL = "https://www.linkedin.com/jobs/search?keywords=Junior%20Java&location=Taiwan&trk=public_jobs_jobs-search-bar_search-submit&position=3&pageNum=0";
         driver.get(URL);
         WebElement jobCard = new WebDriverWait(driver, Duration.ofSeconds(4))
                 .until(ExpectedConditions.presenceOfElementLocated(By

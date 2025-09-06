@@ -11,7 +11,6 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
-@EnableMongoRepositories
 public class JobSearchEngineApplication {
 
 	public static void main(String[] args) {
